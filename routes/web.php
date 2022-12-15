@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FeaturesController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('templates/index');
-});
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/home', function () {
-    return view('home/index');
-});
-Route::get('/features', function () {
-    return view('features/index');
-});
+Route::get('/home', [HomeController::class, 'cekSession']);
+
+Route::get('/features', [FeaturesController::class, 'cekSession']);
+
+Route::get('/get-pesan', [HomeController::class, 'pesan']);
+
+Route::get('/form', [HomeController::class, 'formPage']);
+
+Route::post('/create', [HomeController::class, 'createData']);
